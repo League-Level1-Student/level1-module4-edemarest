@@ -58,9 +58,10 @@ public class Jeopardy implements ActionListener {
 		// 4. Add the header component to the quizPanel
 		quizPanel.add(createHeader(""));
 		// 5. Add the quizPanel to the frame
-		quizPanel.add(frame);
+		frame.add(quizPanel);
 		// 6. Use the createButton method to set the value of firstButton
 		firstButton = createButton("500");
+		firstButton.setText("300");
 		// 7. Add the firstButton to the quizPanel
 		quizPanel.add(firstButton);
 		// 8. Write the code to complete the createButton() method below. Check that your
@@ -69,6 +70,7 @@ public class Jeopardy implements ActionListener {
 		// 9. Use the secondButton variable to hold a button using the createButton
 		// method
 		secondButton = createButton("300");
+		secondButton.setText("500");
 		quizPanel.add(secondButton);
 		firstButton.addActionListener(this);
 		secondButton.addActionListener(this);
@@ -114,9 +116,11 @@ public class Jeopardy implements ActionListener {
 		// If the buttonPressed was the firstButton
 		if (e.getSource() == firstButton) {
 			askQuestion("What is the name of the first play in Sophocles's trilogy?", "Oedipus the King", 500);
+			firstButton.setText(" ");
 		}
-		if (e.getSource() == firstButton) {
+		if (e.getSource() == secondButton) {
 			askQuestion("What is the name of the protagonist in The Stranger by Almert Camus?", "Mersault", 300);
+			secondButton.setText(" ");
 		}
 			// Call the askQuestion() method
  
@@ -147,7 +151,7 @@ public class Jeopardy implements ActionListener {
 			}
 			else {
 				score = score - prizeMoney;
-				JOptionPane.showMessageDialog(null,  "Yoi are wrong, the correct answer was:  " + correctAnswer);
+				JOptionPane.showMessageDialog(null,  "You are wrong, the correct answer was:  " + correctAnswer);
 			}
 			
 			updateScore();
