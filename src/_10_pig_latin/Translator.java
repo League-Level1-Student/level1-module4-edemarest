@@ -24,7 +24,7 @@ public class Translator implements ActionListener {
 		panel.add(input);
 		panel.add(translate);
 		panel.add(output);
-		frame.setPreferredSize(new Dimension(800, 30));
+		frame.setPreferredSize(new Dimension(800, 60));
 		input.setPreferredSize(new Dimension(200, 20));
 		output.setPreferredSize(new Dimension(200, 20));
 		input.addActionListener(this);
