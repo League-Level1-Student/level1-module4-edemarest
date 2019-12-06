@@ -5,5 +5,12 @@ public class TranslatorRunner {
 		
 		new Translator().run();
 		
+		
+		
+		
+		
+		
+
+		
 	}
 }
