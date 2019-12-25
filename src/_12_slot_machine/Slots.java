@@ -1,5 +1,6 @@
 package _12_slot_machine;
 
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.MalformedURLException;
@@ -11,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class Slots implements ActionListener {
@@ -20,8 +22,7 @@ public class Slots implements ActionListener {
 	JLabel label1 = new JLabel();
 	JLabel label2 = new JLabel();
 	JLabel label3 = new JLabel();
-	JButton spin = new JButton();
-	Random random = new Random();
+	JButton spin = new JButton("SPIN");
 	Icon slot1;
 	Icon slot2;
 	Icon slot3;
@@ -36,9 +37,13 @@ public class Slots implements ActionListener {
 	public void run() {
 		frame.add(panel);
 		panel.add(spin);
+		panel.add(label1);
+		panel.add(label2);
+		panel.add(label3);
 		label1.setIcon(slot1);
 		label2.setIcon(slot2);
 		label3.setIcon(slot3);
+		label1.setPreferredSize(new Dimension(100, 200));
 		spin.addActionListener(this);
 		frame.setVisible(true);
 		frame.pack();
@@ -60,41 +65,46 @@ public class Slots implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		for(int i = 0; i < 3; i++) {
+			Random random = new Random();
 			int randomNum = random.nextInt(3);
-			if (i == 1) {
+			System.out.println(randomNum);
+			if (i == 0) {
+				if(randomNum == 0) {
+					label1.setIcon(slot1);
+				}
 				if(randomNum == 1) {
-					slot1 = createLabelImage("cherries.png");
+					label1.setIcon(slot2);
 				}
 				if(randomNum == 2) {
-					slot1 = createLabelImage("orange.png");
+					label1.setIcon(slot3);
 				}
-				if(randomNum == 3) {
-					slot1 = createLabelImage("seven.png");
+			}
+			if (i == 1) {
+				if(randomNum == 0) {
+					label2.setIcon(slot1);
+				}
+				if(randomNum == 1) {
+					label2.setIcon(slot2);
+				}
+				if(randomNum == 2) {
+					label2.setIcon(slot3);
 				}
 			}
 			if (i == 2) {
+				if(randomNum == 0) {
+					label3.setIcon(slot1);
+				}
 				if(randomNum == 1) {
-					slot2 = createLabelImage("cherries.png");
+					label3.setIcon(slot2);
 				}
 				if(randomNum == 2) {
-					slot2 = createLabelImage("orange.png");
-				}
-				if(randomNum == 3) {
-					slot2 = createLabelImage("seven.png");
-				}
-			}
-			if (i == 3) {
-				if(randomNum == 1) {
-					slot3 = createLabelImage("cherries.png");
-				}
-				if(randomNum == 2) {
-					slot3 = createLabelImage("orange.png");
-				}
-				if(randomNum == 3) {
-					slot3 = createLabelImage("seven.png");
+					label3.setIcon(slot3);
 				}
 			}
 
+		}
+		if(label1.getIcon().equals(label2.getIcon()) && label2.getIcon().equals(label3.getIcon())){
+			JOptionPane.showMessageDialog(null, "You Win!");
 		}
 		
 		
